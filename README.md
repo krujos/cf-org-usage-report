@@ -10,3 +10,6 @@ Org pivotalservices is using 5504 of 102400
 Org krujos is using 768 of 10240
 Org pcfp is using 1024 of 10240
 ```
+
+## Known issues
+If an org or space doesn't contain the fields we're asking for in the script it does not fail gracefully. 
