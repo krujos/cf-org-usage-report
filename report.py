@@ -4,7 +4,7 @@ from subprocess import check_output
 import json 
 
 orgs = json.loads(check_output(['/usr/bin/cf-admin-6.10.0-linux-x86_64/cf', 'curl', '/v2/organizations']).decode('utf8'))
-
+appcount = 0
 for org in orgs['resources']:
     name = org['entity']['name']
     guid = org['metadata']['guid']
@@ -23,8 +23,9 @@ for org in orgs['resources']:
             instances = app['entity']['instances']
             memory = app['entity']['memory']
             consumed += (instances * memory)
+            appcount = appcount + 1
         print "\tSpace " + space['entity']['name'] + " is using " + str(consumed) + "MB memory (" + str(100 * consumed / quota_memory_limit) + "%) of org quota"
-        
+print "You are running " + str(appcount) + " apps in all orgs"
 
                     
 
