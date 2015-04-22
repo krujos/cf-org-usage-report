@@ -5,6 +5,7 @@ import json
 
 orgs = json.loads(check_output(['/usr/bin/cf-admin-6.10.0-linux-x86_64/cf', 'curl', '/v2/organizations']).decode('utf8'))
 appcount = 0
+appinstancecount = 0
 for org in orgs['resources']:
     name = org['entity']['name']
     guid = org['metadata']['guid']
@@ -24,8 +25,9 @@ for org in orgs['resources']:
             memory = app['entity']['memory']
             consumed += (instances * memory)
             appcount = appcount + 1
+            appinstancecount = appinstancecount + instances
         print "\tSpace " + space['entity']['name'] + " is using " + str(consumed) + "MB memory (" + str(100 * consumed / quota_memory_limit) + "%) of org quota"
-print "You are running " + str(appcount) + " apps in all orgs"
+print "You are running " + str(appcount) + " apps in all orgs, with a total of " + str(appinstancecount) + " instances"
 
                     
 
