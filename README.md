@@ -1,6 +1,6 @@
 #Report on memory usage of Cloud Foundry Orgs and Spaces.
 
-This is a sample script to report on the amount of memory used against the currently applied quota. It uses CF curl and the currently logged in user to access the [Cloud Controller rest API](http://apidocs.cloudfoundry.org/). This script is written against v204 but is expected to work against any release. Should you have a problem please open an issue.
+This is a sample script to report on the amount of memory used against the currently applied quota. It uses CF curl and the currently logged in user to access the [Cloud Controller rest API](http://apidocs.cloudfoundry.org/). It assumes the CF cli is in your path.  This script is written against v204 but is expected to work against any release. Should you have a problem please open an issue.
 
 ##Usage
 
