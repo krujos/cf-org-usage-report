@@ -1,7 +1,7 @@
 #!/usr/bin/env python
-#Script runs as whoever is logged into the CF API. 
+#Script runs as whoever is logged into the CF API.
 from subprocess import check_output
-import json 
+import json
 
 orgs = json.loads(check_output(['cf', 'curl', '/v2/organizations']).decode('utf8'))
 appcount = 0
@@ -27,8 +27,6 @@ for org in orgs['resources']:
             appcount = appcount + 1
             appinstancecount = appinstancecount + instances
         print "\tSpace " + space['entity']['name'] + " is using " + str(consumed) + "MB memory (" + str(100 * consumed / quota_memory_limit) + "%) of org quota"
-print "You are running " + str(appcount) + " apps in all orgs, with a total of " + str(appinstancecount) + " instances"
-
-                    
-
-
+        if len(apps['resources']) > 0:
+            print "\t\t running " + str(len(apps['resources'])) + " apps with " + str(instances * len(apps['resources'])) + " instances"
+print "\nYou are running " + str(appcount) + " apps in all orgs, with a total of " + str(appinstancecount) + " instances"
