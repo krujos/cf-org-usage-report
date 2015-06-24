@@ -29,4 +29,4 @@ for org in orgs['resources']:
         print "\tSpace " + space['entity']['name'] + " is using " + str(consumed) + "MB memory (" + str(100 * consumed / quota_memory_limit) + "%) of org quota"
         if len(apps['resources']) > 0:
             print "\t\t running " + str(len(apps['resources'])) + " apps with " + str(instances * len(apps['resources'])) + " instances"
-print "You are running " + str(appcount) + " apps in all orgs, with a total of " + str(appinstancecount) + " instances"
+print "\nYou are running " + str(appcount) + " apps in all orgs, with a total of " + str(appinstancecount) + " instances"
